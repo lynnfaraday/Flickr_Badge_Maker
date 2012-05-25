@@ -1,6 +1,6 @@
-================
-FlickrBadgeMaker
-================
+==================
+Flickr Badge Maker
+==================
 
 Flickr Badge Maker helps you make photo gallery "badges" of your [Flickr](http://www.flickr.com) photos, suitable for a blog or other website.
 
