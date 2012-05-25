@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+$:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
+
+require 'flickr_badge_maker'
+require 'client'
+
+client = FlickrBadgeMakerClient.new()
+
+case ARGV[0]
+    when "info"
+	    client.get_set_info(ARGV[1])      
+    when "badge" 
+	    client.make_badge(ARGV[1])      
+    when "configure"
+	    client.configure()
+    else
+	    die "Usage: flickr_badge_maker <command> <options>\n"
+end
+
