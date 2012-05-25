@@ -6,7 +6,7 @@ Flickr Badge Maker helps you make photo gallery "badges" of your [Flickr](http:/
 
 ##  Install the GEM
 
-    $ gem install flickr_badge_maker
+Coming soon -- for now clone, build and install the gem locally.
 
 This will give you access to the API in your own applications and also installs a client program that offers some handy commands.
 
