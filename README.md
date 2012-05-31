@@ -65,7 +65,7 @@ Here is an example of how to use the gem's API in your application.
           :css_file => config["flickr"]["access_secret"]
       }
 
-     flickr_badge_maker = FlickrBadgeMaker.new(config)
+     flickr_badge_maker = FlickrBadgeMaker::FlickerBadgeMaker.new(config)
      photos = flickr_badge_maker.get_photos(ENV['set'])
      photos.each { |p|  puts "<img src=\"#{p[:thumb_image_url]}\"/>" }
 
