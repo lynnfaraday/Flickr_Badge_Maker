@@ -3,7 +3,6 @@
 $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 
 require 'flickr_badge_maker'
-require 'client'
 
 client = FlickrBadgeMakerClient.new()
 
