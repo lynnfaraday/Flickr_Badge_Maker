@@ -10,12 +10,6 @@ class FlickrBadgeMakerClient
   
   def read_config
     config = YAML.load_file(@config_path)
-    {
-      :api_key => config["flickr"]["api_key"],
-      :shared_secret => config["flickr"]["shared_secret"],
-      :access_token => config["flickr"]["access_token"],
-      :css_file => config["flickr"]["access_secret"]
-    }
   end
 
   def configure
@@ -71,6 +65,23 @@ class FlickrBadgeMakerClient
     ap flickr_badge_maker.get_photos(set)
   end
 
+  def get_short_set_info(set)
+    config = read_config
+    flickr_badge_maker = FlickrBadgeMaker.new(config)
+    photos = flickr_badge_maker.get_photos(set)
+    short_info = []
+    photos.each do |photo| 
+      short_info << 
+       {  
+          'view_url'    => photo['view_url'],
+          'preview_image_url' => photo[config['preview_field']],
+          'enlarge_image_url' => photo[config['enlarge_field']],
+          'caption'     => photo['caption'] 
+       }
+    end
+    print YAML.dump(short_info)
+  end
+
   def make_badge(set)
     config = read_config
     flickr_badge_maker = FlickrBadgeMaker.new(config)
@@ -78,8 +89,8 @@ class FlickrBadgeMakerClient
     photos.each { |p|
 
       puts "<ul>"
-      puts "<li><a href=\"#{p[:view_url]}\"><img src=\"#{p[:thumb_image_url]}\"/></a>"
-      puts "<br/>#{p[:caption]}"
+      puts "<li><a href=\"#{p['view_url']}\"><img src=\"#{p['thumb_image_url']}\"/></a>"
+      puts "<br/>#{p['caption']}"
       puts "</ul>"
 
     }

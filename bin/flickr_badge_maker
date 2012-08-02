@@ -10,11 +10,13 @@ client = FlickrBadgeMakerClient.new()
 case ARGV[0]
     when "info"
 	    client.get_set_info(ARGV[1])      
+    when "shortinfo"
+	    client.get_short_set_info(ARGV[1])      
     when "badge" 
 	    client.make_badge(ARGV[1])      
     when "configure"
 	    client.configure()
     else
-	    die "Usage: flickr_badge_maker <command> <options>\n"
+	    raise "Usage: flickr_badge_maker <command> <options>\n"
 end
 

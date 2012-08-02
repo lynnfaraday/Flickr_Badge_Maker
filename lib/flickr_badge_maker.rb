@@ -1,10 +1,10 @@
 require 'flickraw'
 class FlickrBadgeMaker
   def initialize(config)
-    @api_key = config[:api_key]
-    @shared_secret = config[:shared_secret]
-    @access_token = config[:access_token]
-    @access_secret = config[:access_secret]
+    @api_key = config['api_key']
+    @shared_secret = config['shared_secret']
+    @access_token = config['access_token']
+    @access_secret = config['access_secret']
 
     FlickRaw.api_key=@api_key
     FlickRaw.shared_secret=@shared_secret
@@ -21,15 +21,15 @@ class FlickrBadgeMaker
 
       gallery_photos <<
           {
-              :squarethumb_image_url => FlickRaw.url_s(info),
-              :thumb_image_url => FlickRaw.url_t(info),
-              :small_image_url => FlickRaw.url_m(info),
-              :med_image_url => FlickRaw.url(info),
-              :large_image_url => FlickRaw.url_b(info),
-              :orig_image_url => FlickRaw.url_o(info),
-              :caption => info.title,
-              :host => "Flickr",
-              :view_url => FlickRaw.url_photopage(info)
+              'squarethumb_image_url' => FlickRaw.url_s(info),
+              'thumb_image_url'       => FlickRaw.url_t(info),
+              'small_image_url'       => FlickRaw.url_m(info),
+              'med_image_url'         => FlickRaw.url(info),
+              'large_image_url'       => FlickRaw.url_b(info),
+              'orig_image_url'        => FlickRaw.url_o(info),
+              'caption'               => info.title,
+              'host'                  => "Flickr",
+              'view_url'              => FlickRaw.url_photopage(info)
           }
     }
     gallery_photos
