@@ -2,5 +2,9 @@ api_key: todo
 shared_secret: todo
 access_token: todo
 access_secret: todo
-enlarge_field: med_image_url
-preview_field: small_image_url
+display:
+    enlarge_image_url: med_image_url
+    preview_image_url: small_image_url
+    view_url: view_url
+    caption: caption
+

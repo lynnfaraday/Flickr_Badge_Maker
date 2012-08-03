@@ -2,21 +2,25 @@
 
 $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 
-require 'flickr_badge_maker'
-require 'client'
+require "flickr_badge_maker"
 
-client = FlickrBadgeMakerClient.new()
+client = FlickrBadgeMaker::Client.new
 
 case ARGV[0]
     when "info"
 	    client.get_set_info(ARGV[1])      
-    when "shortinfo"
-	    client.get_short_set_info(ARGV[1])      
+    when "yaml"
+	    client.get_badge_yaml(ARGV[1])      
     when "badge" 
 	    client.make_badge(ARGV[1])      
     when "configure"
-	    client.configure()
+	    client.configure
     else
-	    raise "Usage: flickr_badge_maker <command> <options>\n"
+	    puts "Usage: flickr_badge_maker <command> <options>\n"
+	    puts "\nAvailable commands:"
+	    puts "   configure - Walks through the configuration process.  *Do this first.*"
+	    puts "   info <set id> - Shows complete information for a photoset."
+	    puts "   yaml <set id> - Shows abbreviated yaml style info for a photoset."
+	    puts "   badge <set id> - Shows a HTML badge snippet for a photoset."
 end
 
