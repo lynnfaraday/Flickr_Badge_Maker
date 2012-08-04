@@ -14,12 +14,11 @@ This will give you access to the API in your own applications and also installs 
 	
 Run the client application using the **flickr_badge_maker** command.
 
-### Configuration Walkthrough
+### Configuration
 
    flickr_badge_maker configure
 
-This will walk you through the oauth authentication process interactively.  When it's finished, you will be able to paste the configuration data into your flickr_config.yaml file.  This will allow you to access your Flickr account via the application.
-
+This will walk you through the oauth authentication process interactively.  When it's finished, it will update the configuration file and enable you to access your Flickr account via the application.
 
 ### Photo Info
 
@@ -78,22 +77,22 @@ Here is an example of how to use the gem's API in your application.
     require 'flickr_badge_maker'
     require 'yaml'
 
-    # Include the config.yaml file in your project and reference it like so.
+    # Include the config data in your project and reference it like so.
     # (or you can just hard-code the values)
     config = YAML.load_file("flickr_config.yaml")
       {
-          :api_key => config["flickr"]["api_key"],
+          'api_key' => config["flickr"]["api_key"],
           etc.
       }
 
-     flickr_badge_maker = FlickrBadgeMaker::FlickerBadgeMaker.new(config)
+     flickr_badge_maker = FlickrBadgeMaker::Maker.new(config)
      photos = flickr_badge_maker.get_photos('122')
      photos.each { |p|  puts "<img src=\"#{p[:thumb_image_url]}\"/>" }
 
 
 ## Configuration
 
-The configuration values are stored in the flickr_config.yaml file.
+The configuration values are stored in the **.flickr_config** file in your home directory.
 
 	api_key: 123
 	shared_secret: 456
@@ -105,7 +104,7 @@ The configuration values are stored in the flickr_config.yaml file.
 	    view_url: view_url
 	    caption: caption
 
-The first four values are obtained via the configuration command, described in the client section.
+The first four values are set via the configuration command, described in the client section.
 
 The display values allow you to configure which fields are included in the YAML and Badge output.
 	
