@@ -9,20 +9,14 @@ module FlickrBadgeMaker
     end
 
     def configure(config)
-      @api_key = config['api_key']
-      @shared_secret = config['shared_secret']
-      @access_token = config['access_token']
-      @access_secret = config['access_secret']
-
+      @config = config
       begin
-        FlickRaw.api_key=@api_key
-        FlickRaw.shared_secret=@shared_secret
-        flickr.access_token = @access_token
-        flickr.access_secret = @access_secret
-      rescue Exception => e
-        puts "Unable to initialize flickr library."
-        puts "   Error: #{e.message}"
-        puts "Please check your configuration or execute the 'configure' command."
+        FlickRaw.api_key=config['api_key']
+        FlickRaw.shared_secret=config['shared_secret']
+        flickr.access_token = config['access_token']
+        flickr.access_secret = config['access_secret']
+      rescue FlickRaw::FailedResponse => e
+          puts "Warning: Unable to initialize flickr library.  Check your configuration."
       end
     end
     
