@@ -6,7 +6,7 @@ Flickr Badge Maker helps you make photo gallery "badges" of your [Flickr](http:/
 
 ##  Install the GEM
 
-gem install flickr_badge_maker
+    gem install flickr_badge_maker
 
 This will give you access to the API in your own applications and also installs a client program that offers some handy commands.
 
@@ -16,13 +16,13 @@ Run the client application using the **flickr_badge_maker** command.
 
 ### Configuration
 
-   flickr_badge_maker configure
+    flickr_badge_maker configure
 
 This will walk you through the oauth authentication process interactively.  When it's finished, it will update the configuration file and enable you to access your Flickr account via the application.
 
 ### Photo Info
 
-  flickr_badge_maker info <set id>
+    flickr_badge_maker info <set id>
 
 This outputs the photo information for a given flickr photoset, so you can see what info
 you have at your disposal.  For example:
@@ -44,7 +44,7 @@ size is not available, flickr will return the URL of the next bigger size.
 
 ### YAML Badge Info 
 
-  flickr_badge_maker yaml <set id>
+    flickr_badge_maker yaml <set id>
 
 This outputs a YAML style data sample for your set.
 
@@ -59,7 +59,7 @@ This outputs a YAML style data sample for your set.
 
 ### Simple Badge
 
-  flickr_badge_maker badge <set id>
+    flickr_badge_maker badge <set id>
 
 This outputs the HTML for a very simple photo badge, just to show how the script can be used.
 
